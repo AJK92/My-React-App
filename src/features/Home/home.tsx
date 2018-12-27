@@ -64,7 +64,7 @@ class Home extends React.Component<HomeProps, HomeState> {
 
     // Filtring function for search
     onSearchText = (event: any) => {
-        let value = event.target.value || ''
+        let value = (event.target.value || '').toLowerCase()
 
         let searchResult = (this.props.galleryList || []).filter((item) => {
             return ((item.name || '').toLowerCase()).includes(value)
@@ -113,7 +113,7 @@ class Home extends React.Component<HomeProps, HomeState> {
             return <GalleryListCell key={index} imageUrl={dataItem.imageUrl || ''} name={dataItem.name || ''} />
         })
 
-        return <div className="h-full text-xs bg-black overflow-y-auto" onScroll={this.trackScrolling}>
+        return <div className="h-full text-xs bg-black  overflow-y-scroll sm:scrolling-touch" onScroll={this.trackScrolling}>
             <div className="flex pt-3 pl-3 flex-wrap">
                 {innerGalleryCell}
             </div>
